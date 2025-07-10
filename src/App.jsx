@@ -9,6 +9,27 @@ function App() {
   const [products, setProducts] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [cart, setCart] = useState([]);
+
+  function onClick(product, amount) {
+    if (amount !== 0) {
+      if (cart.find((prod) => prod.title === product.title)) {
+        setCart(cart.map((prod) => {
+          return prod.title === product.title
+          ? {...prod, quantity: prod.quantity + amount}
+          : prod
+        }))
+      } else {
+        setCart([...cart, {title: product.title, quantity: amount, price: product.price}])
+      }
+      
+    }
+  }
+
+  useEffect(() => {
+    console.log("Cart updated:", cart);
+  }, [cart]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +60,7 @@ function App() {
         </Link>
       </nav>
       <main>
-        <Outlet context={{products}}/>
+        <Outlet context={{products, onClick}}/>
       </main>
     </>
   )
