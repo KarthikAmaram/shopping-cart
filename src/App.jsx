@@ -27,6 +27,10 @@ function App() {
     }
   }
 
+  function onCheckout() {
+    setCart([]);
+  }
+
   useEffect(() => {
     let x = 0;
     for (const product of cart) {
@@ -68,7 +72,7 @@ function App() {
         </Link>
       </nav>
       <main>
-        <Outlet context={{products, cart, onAdd}}/>
+        <Outlet context={{products, cart, onAdd, onCheckout}}/>
       </main>
     </>
   )
