@@ -11,7 +11,7 @@ function Cart() {
     <>
       <h1 className="mb-4 text-left text-[36px]">Shopping Cart</h1>
       <div className="flex gap-x-16 items-start">
-        <div className="flex flex-col gap-y-8 w-full">
+        <div className="flex flex-col gap-y-2 w-full">
           <hr className="border-t border-gray-400 my-4" />
           {cart.map((product) => (
             <div key={product.id}>
@@ -22,10 +22,10 @@ function Cart() {
                   className="size-48"
                 />
                 <div className="flex flex-col justify-center items-start">
-                  <h2>{product.title}</h2>
-                  <p className="text-left">{product.description}</p>
-                  <h2>{"Quantity: " + product.quantity}</h2>
-                  <h2>{"$" + (product.price.toFixed(2))}</h2>
+                  <h2 className="font-bold">{product.title}</h2>
+                  <p className="text-left text-gray-600">{product.description}</p>
+                  <h2 className="font-medium">{"Quantity: " + product.quantity}</h2>
+                  <h2 className="font-medium">{"$" + (product.price.toFixed(2))}</h2>
                 </div>
               </div>
               <hr className="border-t border-gray-300 my-4" />
