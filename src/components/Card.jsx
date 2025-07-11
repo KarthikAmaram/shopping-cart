@@ -1,11 +1,11 @@
 import { useState } from "react"
 
-function Card({product, onClick}) {
+function Card({product, onAdd}) {
     const [amount, setAmount] = useState(0);
 
     function resetAmount() {
         setAmount(0);
-        onClick(product, amount);
+        onAdd(product, amount);
     }
     return (
         <div className="border border-black rounded-md p-4 flex flex-col items-center text-center max-w-xs mx-auto w-full justify-between">
@@ -13,12 +13,12 @@ function Card({product, onClick}) {
             <h1>{product.title}</h1>
             <h2>{"$" + product.price}</h2>
             <div className="flex gap-x-8">
-                <button onClick={() => setAmount((amount) => amount > 0 ? amount - 1 : amount)}>-</button>
+                <button className="hover:bg-gray-200 rounded-lg grow-0" onClick={() => setAmount((amount) => amount > 0 ? amount - 1 : amount)}>-</button>
                 <h3>{amount}</h3>
-                <button onClick={() => setAmount((amount) => amount + 1)}>+</button>
+                <button className="hover:bg-gray-200 rounded-lg grow-0" onClick={() => setAmount((amount) => amount + 1)}>+</button>
             </div>
             <button 
-            className="border border-black rounded-md p-2 text-center"
+            className="border border-black rounded-md p-2 text-center hover:bg-gray-200"
             onClick={resetAmount}
             >Add to cart</button>
         </div>
